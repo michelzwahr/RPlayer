@@ -6,7 +6,7 @@ use crossterm::{
 const WIDTH: usize = 52;
 const MIN_WIDTH: usize = 40;
 const WIDTH_STEP: usize = 2;
-const DEFAULT_ACCENT: Color = Color::Green;
+const DEFAULT_ACCENT: Color = Color::White;
 
 const SHUFFLE_SYMBOL: &str = "";
 const REPEAT_OFF_SYMBOL: &str = "󰑗";
@@ -220,10 +220,11 @@ impl UI {
         self.row_styled(y, self.inner_width(), self.progress_bar(self.fluent_bar, elapsed, track_duration_secs))?;
         y += 1;
         self.border(y, '└', '┘')?;
-        y += 1;
+
+        // y += 1;
     
-        queue!(stdout(), MoveTo(0, y + 1))?;
-        print!("[←/→] Breite ändern   [q] Beenden");
+        // queue!(stdout(), MoveTo(0, y + 1))?;
+        // print!("[←/→] Breite ändern   [q] Beenden   [n/p] next/previous   [␣] pause/play   [r] cycle rotate   [s] toggle shuffle   [f] fit content to terminal   [b] toggle bar mode");
     
         stdout().flush()
     }

@@ -16,7 +16,7 @@ use crossterm::event::{Event, EventStream, KeyCode};
 use crossterm::style::Color;
 use futures_util::StreamExt;
 
-const DEFAULT_ACCENT: Color = Color::Green;
+const DEFAULT_ACCENT: Color = Color::White;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
