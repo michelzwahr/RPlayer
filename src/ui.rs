@@ -23,8 +23,8 @@ const BAR_FILLED_RIGHT: &str = "";
 const BAR_EMPTY_LEFT: &str = "";
 const BAR_EMPTY_RIGHT: &str = "";
 
-const PLAY_SYMBOL: &str = "";
-const PAUSE_SYMBOL: &str = "";
+const PAUSE_SYMBOL: &str = "";
+const PLAY_SYMBOL: &str = "";
 
 
 pub struct UI {
@@ -144,10 +144,10 @@ impl UI {
         // wie bisher, aber mit filled_u statt eigener Berechnung
         format!(
             "{time_l} {}{}{}{} {time_r}",
-            if filled_u != 0 { BAR_FILLED_LEFT } else { BAR_EMPTY_LEFT },
-            BAR_FILLED.repeat(filled_u),
-            BAR_EMPTY.repeat(bar_len - filled_u),
-            if filled_u != bar_len { BAR_EMPTY_RIGHT } else { BAR_FILLED_RIGHT },
+            if filled_u != 0 { BAR_FILLED_LEFT.with(self.accent) } else { BAR_EMPTY_LEFT.with(self.accent )},
+            BAR_FILLED.repeat(filled_u).with(self.accent),
+            BAR_EMPTY.repeat(bar_len - filled_u).with(self.accent),
+            if filled_u != bar_len { BAR_EMPTY_RIGHT.with(self.accent) } else { BAR_FILLED_RIGHT.with(self.accent) },
         )
     }
 }
@@ -224,7 +224,7 @@ impl UI {
         // y += 1;
     
         // queue!(stdout(), MoveTo(0, y + 1))?;
-        // print!("[←/→] Breite ändern   [q] Beenden   [n/p] next/previous   [␣] pause/play   [r] cycle rotate   [s] toggle shuffle   [f] fit content to terminal   [b] toggle bar mode");
+        // print!("[←/→] Breite ändern   [q] Beenden   [n/p] next/previous   [␣] pause/play   [r] cycle repeat   [s] toggle shuffle   [f] fit content to terminal   [b] toggle bar mode");
     
         stdout().flush()
     }
